@@ -47,10 +47,38 @@ void combinations_77()
 {
 	int n = 4;
 	int k = 2;
-	int p = 0;	
+	int p = 0;
 	int *pp = NULL;
 	int **ppp = NULL;
 
 	ppp = combine(n, k, &p, &pp);
 	return;
+}
+
+char *replaceSpace(char *s)
+{
+	int len = strlen(s);
+	if (len == 0)
+	{
+		return NULL;
+	}
+	int j = 0;
+	char *resultBuf = (char *)malloc(len * 3);
+	memset(resultBuf, 0, len * 3);
+	for (int i = 0; i < len; i++)
+	{
+		if (s[i] == ' ')
+		{
+			resultBuf[j] = '%';
+			resultBuf[j] = '2';
+			resultBuf[j] = '0';
+			j += 3;
+		}
+		else
+		{
+			resultBuf[j] = s[i];
+			j++;
+		}
+	}
+	return resultBuf;
 }
